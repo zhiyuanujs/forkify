@@ -10,9 +10,12 @@ class ResultsView extends View {
   }
 
   _generateMarkupPreview(el) {
+    const id = window.location.hash.slice(1);
     return `
       <li class="preview">
-        <a class="preview__link" href="#${el.id}">
+        <a class="preview__link ${
+          el.id === id ? 'preview__link--active' : ''
+        }" href="#${el.id}">
           <figure class="preview__fig">
             <img src="${el.image}" alt="Test" />
           </figure>
@@ -27,11 +30,3 @@ class ResultsView extends View {
 }
 
 export default new ResultsView();
-
-`
-<div class="preview__user-generated">
-              <svg>
-                <use href="${icons}#icon-user"></use>
-              </svg>
-</div>
-            `;
